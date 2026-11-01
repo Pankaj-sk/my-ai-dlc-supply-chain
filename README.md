@@ -2,6 +2,8 @@
 
 How we run **AWS AI-DLC** inside **Kiro** as a *product-independent software factory*. This repo is orientation material so anyone joining a project can get up to speed fast on *how we build*, independent of *what* we're building.
 
+> **New here?** Paste **[docs/onboard-me.md](docs/onboard-me.md)** into any AI assistant (Kiro's chat, or ChatGPT/Claude if you don't have Kiro yet) and it will guide you through installing Kiro, AWS AI-DLC, the Agent Toolkit for AWS, and all dependencies — step by step, for your OS.
+
 > **Product-agnostic by design.** Nothing here is tied to a specific product. The factory is the same whatever we build on top of it; a product enters only as an "intent".
 
 ## TL;DR
@@ -82,7 +84,9 @@ Inside a live run you can also **jump** (`/aidlc --stage <name>` or `--phase <na
 
 ## Set it up
 
-See **[docs/setup-kiro-windows.txt](docs/setup-kiro-windows.txt)** — a Windows setup guide plus the full functional hierarchy (Appendix A) and scope scenarios (Appendix B).
+**New teammate?** Fastest path: paste **[docs/onboard-me.md](docs/onboard-me.md)** into any AI assistant (Kiro's chat, or ChatGPT/Claude if you don't have Kiro yet). It walks you through installing Kiro, its dependencies, AWS AI-DLC, and the Agent Toolkit for AWS — step by step, for your OS.
+
+Prefer a written reference? **[docs/setup-kiro-windows.txt](docs/setup-kiro-windows.txt)** is the Windows deep-dive, plus the full functional hierarchy (Appendix A) and scope scenarios (Appendix B).
 
 **Prerequisites:** Kiro IDE >= 1.1.70, Claude Opus 4.8 (paid Kiro plan).
 
@@ -92,7 +96,8 @@ See **[docs/setup-kiro-windows.txt](docs/setup-kiro-windows.txt)** — a Windows
 3. `diagrams/03-agents-and-stages.svg` — the detail
 4. `diagrams/04-aws-toolkit.svg` — the AWS supplier
 5. **Anatomy of one run** — how to invoke it
-6. `docs/setup-kiro-windows.txt` — install + reference
+6. `docs/onboard-me.md` — paste into an AI to get set up
+7. `docs/setup-kiro-windows.txt` — install + reference
 
 ---
 *Sources: AWS AI-DLC docs (awslabs/aidlc-workflows) and the Agent Toolkit for AWS product page. Content summarized for compliance with licensing restrictions.*
