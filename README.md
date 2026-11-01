@@ -8,6 +8,7 @@ How we run **AWS AI-DLC** inside **Kiro** as a *product-independent software fac
 - **AI-DLC** is an open methodology from AWS: **5 phases, 33 stages, 14 agents**, with human approval gates. It's the *how we build*.
 - We run it inside **Kiro IDE**. A piece of work enters as an intent: `/aidlc <describe the work>`.
 - **Start light** (`/aidlc express`) and **dial up** toward `enterprise` as the work gets more serious.
+- **Runs are granular.** Fire the whole lifecycle, a right-sized subset, or a single stage in isolation (`/aidlc-<stage>`) — you rarely rerun everything. See *Anatomy of one run* below.
 
 ## The factory at a glance
 
