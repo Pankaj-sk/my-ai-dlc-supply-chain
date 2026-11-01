@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 630" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#e65100"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1040" height="630" fill="#ffffff"/>
+  <text x="30" y="30" font-size="21" font-weight="700" fill="#bf360c">Agent Toolkit for AWS — what it gives your coding agent</text>
+  <text x="30" y="51" font-size="12.5" fill="#555">A SUPPLIER into the AI-DLC factory: real AWS capability, AWS-authored knowledge, and guardrails for the agents.</text>
+  <rect x="30" y="175" width="170" height="150" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="115" y="202" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">YOUR CODING AGENT</text>
+  <text x="115" y="226" font-size="9.5" fill="#1565c0" text-anchor="middle">Kiro / Claude Code /</text>
+  <text x="115" y="240" font-size="9.5" fill="#1565c0" text-anchor="middle">Codex / Cursor / Devin</text>
+  <text x="115" y="266" font-size="9" fill="#607d8b" text-anchor="middle">in AI-DLC:</text>
+  <text x="115" y="280" font-size="9" font-weight="600" fill="#607d8b" text-anchor="middle">the aws-platform agent</text>
+  <rect x="230" y="120" width="500" height="380" rx="10" fill="#fff8e1" stroke="#e65100" stroke-width="1.5"/>
+  <text x="480" y="144" font-size="14" font-weight="700" fill="#bf360c" text-anchor="middle">Agent Toolkit for AWS</text>
+  <text x="480" y="163" font-size="9.5" fill="#8d6e63" text-anchor="middle">one command:  aws configure agent-toolkit   (AWS CLI 2.35+)</text>
+  <rect x="245" y="178" width="222" height="142" rx="6" fill="#ffffff" stroke="#ffb74d"/>
+  <text x="256" y="198" font-size="11" font-weight="700" fill="#e65100">AWS MCP Server</text>
+  <text x="256" y="216" font-size="9" fill="#555">Managed remote endpoint — one</text>
+  <text x="256" y="229" font-size="9" fill="#555">authenticated tool to 300+ AWS</text>
+  <text x="256" y="242" font-size="9" fill="#555">services / 15,000+ API actions.</text>
+  <text x="256" y="260" font-size="9" fill="#555">Sandboxed Python scripts.</text>
+  <text x="256" y="273" font-size="9" fill="#555">Live AWS docs at query time.</text>
+  <text x="256" y="290" font-size="9" fill="#555">CloudWatch + IAM controls.</text>
+  <rect x="485" y="178" width="230" height="142" rx="6" fill="#ffffff" stroke="#ffb74d"/>
+  <text x="496" y="198" font-size="11" font-weight="700" fill="#e65100">Agent Skills</text>
+  <text x="496" y="216" font-size="9" fill="#555">Curated, on-demand task packs,</text>
+  <text x="496" y="229" font-size="9" fill="#555">loaded only when relevant:</text>
+  <text x="496" y="246" font-size="9" fill="#555">· service decision guides</text>
+  <text x="496" y="259" font-size="9" fill="#555">· tested step-by-step procedures</text>
+  <text x="496" y="272" font-size="9" fill="#555">· troubleshooting guides</text>
+  <text x="496" y="290" font-size="9" fill="#555">Open source; discover at runtime.</text>
+  <rect x="245" y="332" width="222" height="142" rx="6" fill="#ffffff" stroke="#ffb74d"/>
+  <text x="256" y="352" font-size="11" font-weight="700" fill="#e65100">Agent Plugins</text>
+  <text x="256" y="370" font-size="9" fill="#555">One-command installers that</text>
+  <text x="256" y="383" font-size="9" fill="#555">bundle the MCP config + a</text>
+  <text x="256" y="396" font-size="9" fill="#555">curated set of skills.</text>
+  <text x="256" y="414" font-size="9" fill="#555">Kiro, Claude Code, Cursor,</text>
+  <text x="256" y="427" font-size="9" fill="#555">Codex, Devin. Auto-updating.</text>
+  <rect x="485" y="332" width="230" height="142" rx="6" fill="#ffffff" stroke="#ffb74d"/>
+  <text x="496" y="352" font-size="11" font-weight="700" fill="#e65100">Rule Files</text>
+  <text x="496" y="370" font-size="9" fill="#555">Persistent project instructions</text>
+  <text x="496" y="383" font-size="9" fill="#555">applied every session:</text>
+  <text x="496" y="400" font-size="9" fill="#555">· use the MCP server for API calls</text>
+  <text x="496" y="413" font-size="9" fill="#555">· search skills before starting</text>
+  <text x="496" y="426" font-size="9" fill="#555">· verify vs docs; prefer IaC</text>
+  <rect x="760" y="175" width="250" height="150" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="1.5"/>
+  <text x="885" y="204" font-size="15" font-weight="700" fill="#e65100" text-anchor="middle">AWS</text>
+  <text x="885" y="228" font-size="9.5" fill="#8d6e63" text-anchor="middle">300+ services,</text>
+  <text x="885" y="242" font-size="9.5" fill="#8d6e63" text-anchor="middle">15,000+ API actions</text>
+  <text x="885" y="264" font-size="9" fill="#8d6e63" text-anchor="middle">Lambda · S3 · VPC · DynamoDB</text>
+  <text x="885" y="278" font-size="9" fill="#8d6e63" text-anchor="middle">Bedrock · Aurora · ...</text>
+  <line x1="200" y1="250" x2="227" y2="250" stroke="#e65100" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="730" y1="250" x2="757" y2="250" stroke="#e65100" stroke-width="2" marker-end="url(#a)"/>
+  <text x="520" y="516" font-size="11" fill="#444" text-anchor="middle">Why it matters: agents ship production-ready infrastructure (security, cost, Well-Architected) instead of trial-and-error against stale APIs.</text>
+  <rect x="30" y="528" width="980" height="58" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="44" y="548" font-size="12" font-weight="700" fill="#0d47a1">GOVERNANCE — separate what agents may do from what humans may do</text>
+  <text x="44" y="568" font-size="10" fill="#1565c0">IAM context keys (aws:ViaAWSMCPService / aws:CalledViaAWSMCP) — e.g. keep agents read-only in prod  ·  CloudWatch metrics  ·  CloudTrail audit on every agent request</text>
+  <text x="30" y="610" font-size="9.5" fill="#9e9e9e">Source: Agent Toolkit for AWS product page (aws.amazon.com). Summarized for compliance with licensing restrictions.</text>
+</svg>
