@@ -9,6 +9,54 @@ How we run **AWS AI-DLC** inside **Kiro** as a *product-independent software fac
 - We run it inside **Kiro IDE**. A piece of work enters as an intent: `/aidlc <describe the work>`.
 - **Start light** (`/aidlc express`) and **dial up** toward `enterprise` as the work gets more serious.
 
+## Anatomy of one run (what you feed it)
+
+The unit of work you hand the factory is an **intent**: a single piece of work in plain language, typed in the Kiro chat with the `aidlc` agent selected:
+
+```
+/aidlc <profile> <describe the work>
+```
+
+One complete instruction looks like:
+
+```
+/aidlc express Add IP-based rate limiting to the public REST API
+```
+
+`express` is the *scope*; the rest is the *intent*. AI-DLC proposes a stage plan, asks a few clarifying questions, and stops at an approval gate after each stage — you reply to move it forward.
+
+**The intent changes every run; these dials right-size it:**
+
+| Dial | How to set | Options | Controls |
+|---|---|---|---|
+| Scope / profile | `/aidlc <profile>` | poc · express · bugfix · refactor · security-patch · infra · classic · mvp · feature · enterprise | how many of the 33 stages fire |
+| Depth | `--depth` | minimal · standard · comprehensive | detail per stage |
+| Test strategy | `--test-strategy` | minimal · standard · comprehensive | how many tests |
+| Review | `--review` | none · advisory · adversarial | how hard the reviewer pushes back |
+| Ceremony | `--sensors` `--learnings` `--plan-approval` … | on · off | individual governance machinery |
+
+Don't want to choose? Describe the work and AI-DLC proposes a profile. **Mental model:** the *intent* is the variable (new every run); the *dials* are constants you occasionally adjust — same factory, same 14 agents, same 33 stages.
+
+### You don't always run the whole thing
+
+The finest-grained unit is a **single stage**, which carries its own lead agent, reviewer, and tools:
+
+```
+/aidlc-code-generation        ==  /aidlc --stage code-generation --single
+```
+
+A **stage-runner** runs that one stage in isolation, archives any existing files first, and **never advances your main workflow**. There are 30 of them (one per runnable stage).
+
+| You want to run… | How | Reruns the full pipeline? |
+|---|---|---|
+| The whole lifecycle | `/aidlc <desc>` or a scope-runner | only your scope's stages |
+| A right-sized subset | a **scope** (`/aidlc --scope poc`) or `/aidlc-compose` | no |
+| **One stage** (its agent + reviewer + tools) | `/aidlc-<stage>` | no — workflow untouched |
+| One agent | run the **stage it leads** (agents aren't started on their own) | no |
+| One tool call | plain Kiro / MCP chat, outside AI-DLC | no |
+
+Inside a live run you can also **jump** (`/aidlc --stage <name>` or `--phase <name>`), and in Construction a change to one Unit redoes that Unit's stage only. The full pipeline runs **only** when you ask for a full-lifecycle scope.
+
 ## The factory at a glance
 
 [![The AI-DLC factory — a product-independent pipeline with the AWS supplier layer](diagrams/02-factory.svg)](diagrams/02-factory.svg)
