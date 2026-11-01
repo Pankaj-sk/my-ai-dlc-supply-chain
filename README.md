@@ -11,21 +11,14 @@ How we run **AWS AI-DLC** inside **Kiro** as a *product-independent software fac
 
 ## The factory at a glance
 
-```mermaid
-flowchart LR
-  IN([Product IN<br/>an intent]):::prod --> P0[0 Init]:::f --> P1[1 Ideation]:::f --> P2[2 Inception]:::f --> P3[3 Construction]:::f --> P4[4 Operation]:::f --> OUT([Product OUT<br/>shipped software]):::prod
-  P4 -. feedback loop .-> P1
-  classDef prod fill:#ffe0b2,stroke:#e65100,color:#000
-  classDef f fill:#eceff1,stroke:#607d8b,color:#000
-```
+[![The AI-DLC factory — a product-independent pipeline with the AWS supplier layer](diagrams/02-factory.svg)](diagrams/02-factory.svg)
 
-Only the two orange ends are product-specific. Everything between is the reusable factory. Three cross-cutting layers run underneath: **Control dials** (right-size each run), **Governance** (gates, guards, audit), and **Memory** (team knowledge + a learning loop). An external **supplier** layer (MCP servers such as the Agent Toolkit for AWS) gives the agents real, governed capability.
+*Click the diagram to open it full size.* Only the two orange ends are product-specific. Everything between is the reusable factory. Three cross-cutting layers run underneath: **Control dials** (right-size each run), **Governance** (gates, guards, audit), and **Memory** (team knowledge + a learning loop). An external **supplier** layer (MCP servers such as the Agent Toolkit for AWS) gives the agents real, governed capability.
 
-## Diagrams (click to open full size)
+## More diagrams
 
 | Diagram | What it shows |
 |---|---|
-| [02-factory.svg](diagrams/02-factory.svg) | The product-independent factory + the AWS supplier layer |
 | [01-scenario-grid.svg](diagrams/01-scenario-grid.svg) | How each **scope** lights up the pipeline (start light, dial up) |
 | [03-agents-and-stages.svg](diagrams/03-agents-and-stages.svg) | The 14 agents and all 33 stages, in detail |
 
