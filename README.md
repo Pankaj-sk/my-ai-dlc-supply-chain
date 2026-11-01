@@ -86,8 +86,6 @@ Inside a live run you can also **jump** (`/aidlc --stage <name>` or `--phase <na
 
 **New teammate?** Fastest path: paste **[docs/onboard-me.md](docs/onboard-me.md)** into any AI assistant (Kiro's chat, or ChatGPT/Claude if you don't have Kiro yet). It walks you through installing Kiro, its dependencies, AWS AI-DLC, and the Agent Toolkit for AWS — step by step, for your OS.
 
-Prefer a written reference? **[docs/setup-kiro-windows.txt](docs/setup-kiro-windows.txt)** is the Windows deep-dive, plus the full functional hierarchy (Appendix A) and scope scenarios (Appendix B).
-
 **Prerequisites:** Kiro IDE >= 1.1.70, Claude Opus 4.8 (paid Kiro plan).
 
 ## Suggested reading order
@@ -97,7 +95,6 @@ Prefer a written reference? **[docs/setup-kiro-windows.txt](docs/setup-kiro-wind
 4. `diagrams/04-aws-toolkit.svg` — the AWS supplier
 5. **Anatomy of one run** — how to invoke it
 6. `docs/onboard-me.md` — paste into an AI to get set up
-7. `docs/setup-kiro-windows.txt` — install + reference
 
 ---
 *Sources: AWS AI-DLC docs (awslabs/aidlc-workflows) and the Agent Toolkit for AWS product page. Content summarized for compliance with licensing restrictions.*

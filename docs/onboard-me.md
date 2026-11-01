@@ -2,8 +2,6 @@
 
 **How to use this:** copy everything in the PROMPT section below (from the "PROMPT" marker down to "END OF PROMPT") and paste it into an AI assistant — Kiro's chat if you already have it, otherwise ChatGPT, Claude, or any capable model. It will detect your OS and walk you through the whole setup, one verified step at a time. Links to the official sources are included so the assistant can fetch the latest instructions if anything has changed.
 
-Prefer a written reference instead? See **[setup-kiro-windows.txt](setup-kiro-windows.txt)** — the Windows deep-dive, plus the full functional hierarchy (Appendix A) and scope scenarios (Appendix B).
-
 ---
 
 ## PROMPT — paste everything below this line
