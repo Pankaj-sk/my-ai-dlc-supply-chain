@@ -1,0 +1,317 @@
+================================================================================
+RUNNING AWS AI-DLC IN KIRO IDE (WINDOWS) - TEAM SETUP GUIDE
+================================================================================
+
+What this is:
+  AI-DLC (AI-Driven Development Life Cycle) is an open-source methodology from
+  AWS that structures AI-assisted software development into repeatable, traceable
+  phases (5 phases / 33 stages) with approval gates. It is "harness-neutral" and
+  officially supports Kiro IDE. This guide covers installing and running it inside
+  Kiro IDE on Windows.
+
+  The methodology is product-independent (the "factory"). You invoke it per piece
+  of work as an "intent", e.g.  /aidlc Build a REST API for inventory management
+
+Sources (official AWS docs):
+  - Harness overview: https://github.com/awslabs/aidlc-workflows/blob/main/docs/guide/harnesses/README.md
+  - Kiro chapter:     https://github.com/awslabs/aidlc-workflows/blob/main/docs/guide/harnesses/kiro-ide.md
+  - Install/lifecycle: https://github.com/awslabs/aidlc-workflows/blob/main/docs/guide/18-install-and-lifecycle.md
+  - Workflow profiles: https://github.com/awslabs/aidlc-workflows/blob/main/docs/guide/workflow-profiles.md
+
+--------------------------------------------------------------------------------
+HARD REQUIREMENTS (confirm these FIRST - it will not work as intended without them)
+--------------------------------------------------------------------------------
+  [ ] Kiro IDE version 1.1.70 or later, signed in.
+      (This is the oldest build the Kiro distribution is tested on.)
+
+  [ ] Claude Opus 4.8 selected as the chat model. THIS IS NOT OPTIONAL.
+      AI-DLC's "conductor" runs a multi-step ritual per stage (clarifying
+      questions -> artifact generation -> reviewer pass -> learnings -> approval
+      gate). Opus 4.8 follows the full ritual and pauses correctly at every gate.
+      Weaker models skip steps (reviewer pass, learnings) and rush the gates.
+
+  [ ] A PAID Kiro plan (Claude Opus 4.8 requires it).
+
+  [ ] Windows with PowerShell (this guide is Windows-specific).
+
+--------------------------------------------------------------------------------
+STEP 1 - PICK THE FOLDER FIRST
+--------------------------------------------------------------------------------
+  AI-DLC lays down a lot of structure:
+    .kiro/skills/      .kiro/agents/ (15 agent files)    .kiro/hooks/
+    .kiro/steering/    and a sibling aidlc/ workspace dir (spaces/, intents/, memory)
+  It also appends lines to .gitignore and AGENTS.md.
+
+  Recommendation: install into a DEDICATED folder (e.g. a shared "ai-factory"
+  repo), not into an existing product folder, so the structure stays clean and
+  the methodology can be shared across products.
+
+--------------------------------------------------------------------------------
+STEP 2 - INSTALL (Windows native channel)
+--------------------------------------------------------------------------------
+  Run these in Kiro IDE's OWN terminal, inside your chosen folder.
+
+  Windows uses the PowerShell installer (install.ps1), NOT the curl | sh shown
+  in the Unix docs. Download install.ps1 from the latest release and run it:
+
+      & $installer
+
+  Notes:
+    - The installer is checksum-verified and bundles all harness runtimes.
+    - It needs neither Node.js, Bun, nor Git to run.
+    - It auto-registers the "aidlc" command on your User PATH.
+      (Use  & $installer -NoModifyPath  to opt out of the PATH change.)
+
+  Then select the Kiro surface and verify:
+
+      aidlc config --harness kiro-ide
+      aidlc doctor
+
+--------------------------------------------------------------------------------
+STEP 3 - THE WINDOWS RESTART GOTCHA (this one trips people up)
+--------------------------------------------------------------------------------
+  If Kiro was open while you installed - INCLUDING when you ran the installer in
+  Kiro's own terminal - you MUST fully QUIT Kiro and reopen it before your first
+  /aidlc command.
+
+  Reason: Kiro keeps the PATH it started with, so its hooks, agent, and terminals
+  cannot find "aidlc" until a full restart.
+
+  IMPORTANT: "Developer: Reload Window" is NOT enough here. It must be a full
+  quit and relaunch.
+
+--------------------------------------------------------------------------------
+STEP 4 - FIRST RUN (trust -> reload -> pick the agent)
+--------------------------------------------------------------------------------
+  1. Open the folder in Kiro IDE. If you see the "Restricted Mode" banner,
+     choose Manage -> Trust. Hooks and the aidlc agent will NOT load until the
+     folder is trusted.
+
+  2. Command Palette (Ctrl+Shift+P) -> "Developer: Reload Window".
+
+  3. In the chat panel's AGENT PICKER, choose the "aidlc" agent.
+     THIS IS CRITICAL AND EASY TO MISS:
+       - Kiro starts every new chat on its "Default" agent, not aidlc.
+       - Picking /aidlc from the slash menu does NOT switch the agent.
+       - You must select "aidlc" in the agent picker itself.
+       - If you don't, every AI-DLC command throws an approval card.
+     You must re-pick the aidlc agent in EACH new chat (new IDE chats start on
+     Default; the chat.defaultAgent setting only affects Kiro CLI, not the IDE).
+
+  4. Run  /aidlc --doctor  to verify the setup, then start a workflow.
+
+--------------------------------------------------------------------------------
+STEP 5 - YOUR FIRST (LEAN) RUN
+--------------------------------------------------------------------------------
+  Start at the lightest setting and dial up later:
+
+      /aidlc express
+
+  "express" is the lightest path (requirements -> code -> tests) and ships with
+  sensors, learnings, and plan-approval guards OFF by default.
+
+  Dial up over time as the team gets comfortable:
+      - add memory:        /aidlc --learnings on
+      - add design/build:  /aidlc mvp      (or /aidlc feature)
+      - full governance:   /aidlc enterprise
+
+  Workflow profiles (same engine, different amount of pipeline):
+      poc (5 stages) | express/bugfix (6-7) | classic (15) | mvp (20)
+      | infra (10) | feature/enterprise (30)
+  You can also just describe the work and let AI-DLC propose a profile:
+      /aidlc Fix the login timeout bug
+
+--------------------------------------------------------------------------------
+WINDOWS-SPECIFIC BEHAVIORS WORTH KNOWING
+--------------------------------------------------------------------------------
+  - PowerShell-aware guards: AI-DLC's guard hooks understand execute_pwsh. While
+    a plan awaits approval, read-only cmdlets (Get-Content, Select-Object) still
+    run, but writes (Set-Content, Out-File, > redirects) are blocked. The
+    governance machinery works correctly on Windows.
+
+  - Autopilot vs Supervised: Kiro's own Autopilot/Supervised switch is SEPARATE
+    from AI-DLC's approval gates. Even in Autopilot, AI-DLC still stops for every
+    stage gate and typed-reply question. For a first run, use SUPERVISED so you
+    see every file change AI-DLC writes.
+
+  - Gates render as numbered prose: On Kiro (vs Claude Code's widget), AI-DLC
+    asks questions as numbered options - reply by typing a number. The questions
+    file with [Answer]: tags is the source of truth.
+
+  - Hook debugging: if hooks misbehave, create a marker file to turn on a
+    decision log (no restart needed):
+        New-Item -ItemType File aidlc/.aidlc-hook-debug
+    Delete the file to turn it back off.
+
+--------------------------------------------------------------------------------
+COMMON COMMANDS
+--------------------------------------------------------------------------------
+      /aidlc <description>     start a workflow (creates the first intent)
+      /aidlc express           start the lightest profile
+      /aidlc --doctor          verify the setup
+      /aidlc --status          report current position
+      /aidlc --resume          resume a paused workflow
+      /aidlc park              pause at a stage boundary
+      aidlc doctor             (terminal) project/runtime version check
+      aidlc config --harness kiro-ide   (terminal) select the Kiro surface
+
+--------------------------------------------------------------------------------
+TROUBLESHOOTING QUICK HITS
+--------------------------------------------------------------------------------
+  - "aidlc: command not found" after install  -> you didn't fully quit+reopen
+    Kiro (Reload Window is not enough). See STEP 3.
+  - Every command asks for approval           -> you didn't pick the "aidlc"
+    agent in the chat agent picker. See STEP 4.3.
+  - "AIDLC hooks have not run in this project yet" after sending a message
+    -> repeat the trust + reload + pick-agent steps (STEP 4.1-4.3).
+  - aidlc agent missing from picker / Restricted Mode banner -> folder is not
+    trusted yet. See STEP 4.1.
+
+================================================================================
+NOTE: These steps are taken from the official AWS AI-DLC docs (links at top),
+not from a run on your machine. The two prerequisites you must confirm yourself
+are (a) Kiro IDE >= 1.1.70 and (b) Claude Opus 4.8 on a paid plan. Content from
+the AWS docs was rephrased/summarized; see the linked sources for the originals.
+================================================================================
+
+
+================================================================================
+APPENDIX A - AI-DLC FUNCTIONAL HIERARCHY (what the package contains)
+================================================================================
+Headline numbers: 5 phases | 33 stages | 14 agents | 11 scopes |
+                  3 depth levels | 3 test-strategy levels | 131 audit event types
+
+--------------------------------------------------------------------------------
+1. THE METHODOLOGY - the assembly line (5 phases, 33 stages)
+--------------------------------------------------------------------------------
+Phases run in order; a verification gate checks traceability at each boundary.
+Stages marked (cond) self-skip based on scope/project type.
+
+  PHASE 0 - INITIALIZATION  (3 stages, automatic, no gates)
+    0.1 Workspace Scaffold    0.2 Workspace Detection    0.3 State Initialization
+
+  PHASE 1 - IDEATION  (7 stages - "should we build it?")
+    1.1 Intent Capture & Framing     1.2 Market Research (cond)
+    1.3 Feasibility & Constraints    1.4 Scope Definition
+    1.5 Team Formation (cond)        1.6 Rough Mockups (cond)
+    1.7 Approval & Handoff
+
+  PHASE 2 - INCEPTION  (9 stages - "what exactly, and how shaped?")
+    2.1 Reverse Engineering (brownfield only)   2.2 Practices Discovery (cond)
+    2.3 Requirements Analysis    2.4 User Stories (cond)   2.5 Refined Mockups (cond)
+    2.6 Domain Design (cond)     2.7 Units Generation      2.8 Contract Design (cond)
+    2.9 Delivery Planning
+
+  PHASE 3 - CONSTRUCTION  (7 stages - repeats per Unit of work)
+    3.1 Functional Design   3.2 NFR Requirements   3.3 NFR Design
+    3.4 Infrastructure Design   3.5 Code Generation
+    3.6 Build and Test (once at end)   3.7 CI Pipeline (cond, once at end)
+
+  PHASE 4 - OPERATION  (7 stages, all conditional - "run it, learn, loop back")
+    4.1 Deployment Pipeline   4.2 Environment Provisioning   4.3 Deployment Execution
+    4.4 Observability Setup   4.5 Incident Response          4.6 Performance Validation
+    4.7 Feedback & Optimization (terminal stage; feeds insight back to Phase 1)
+
+--------------------------------------------------------------------------------
+2. THE WORKFORCE - 14 agent personas (orchestrated by one "conductor")
+--------------------------------------------------------------------------------
+  11 DOMAIN AGENTS (do the stage work):
+    product         - requirements, user stories, market research
+    design          - UX/UI, wireframes, mockups
+    delivery        - team formation, delivery sequencing
+    architect       - BROADEST (10 stages): domain design, units, contracts, NFRs
+    aws-platform    - infrastructure, CDK/CloudFormation, cost
+    compliance      - regulatory (support-only, no lead stages)
+    devsecops       - security/threat modelling (support-only)
+    developer       - code implementation, code analysis
+    quality         - test strategy, test generation, perf validation
+    pipeline-deploy - CI/CD, deployment, release
+    operations      - observability, incident response, feedback loop
+
+  2 REVIEWER AGENTS (challenge the work at the gate, never build):
+    product-lead           - reviews requirements/stories/mockups
+    architecture-reviewer  - reviews technical design
+
+  1 COMPOSER AGENT:
+    composer - scores task "entropy" and proposes a tailored EXECUTE/SKIP stage grid
+
+  NOTE: agents never call each other; the conductor performs every delegation.
+
+--------------------------------------------------------------------------------
+3. THE CONTROL DIALS - right-sizing a run (this is the "turn on more later" layer)
+--------------------------------------------------------------------------------
+  Dial A - SCOPE / profile (how many stages fire):
+     poc(5) express(7) bugfix(6) refactor(7) security-patch(7) infra(10)
+     classic(15) mvp(20) workshop(23) feature(30) enterprise(30) + composed
+  Dial B - DEPTH (detail per stage):        minimal | standard | comprehensive
+  Dial C - TEST STRATEGY (how many tests):  minimal | standard | comprehensive
+  Dial D - REVIEW CLASS (how hard it bites): none | advisory | adversarial
+  Dial E - CEREMONY SWITCHES (toggle machinery): --sensors --learnings
+           --summary-confirmation --plan-approval --collaborators --guard-policy
+
+--------------------------------------------------------------------------------
+4. THE GOVERNANCE MACHINERY - what enforces quality
+--------------------------------------------------------------------------------
+  - Approval gates: every non-init stage ends with a human gate (typed reply)
+  - Phase-boundary verification: automated traceability check between phases
+  - Guard hooks (run on tool use):
+      plan-approval-guard    - blocks code writes until plan approved
+      review-freeze          - blocks edits to reviewed output under a receipt
+      state-transition-guard - protects state/audit/hook files from tampering
+      terminal-command-guard - classifies/limits shell commands (PowerShell-aware)
+  - Audit trail: 131 event types -> per-intent audit/ shards (full traceability)
+  - Human-turn recording: tracks that YOU actually answered each gate
+
+--------------------------------------------------------------------------------
+5. THE MEMORY - knowledge & the learning loop
+--------------------------------------------------------------------------------
+  - Methodology knowledge: ships with the framework (per-agent)
+  - Team knowledge: aidlc/spaces/<space>/knowledge/<agent>/  (YOUR standards;
+    survives framework upgrades - this is where product-specific context lives)
+  - Active memory: steering that injects space memory into every chat
+  - Learning loop / sensors: captures affirmed conventions as reusable rules
+  - Spaces & intents: many parallel pieces of work, each one an "intent"
+
+--------------------------------------------------------------------------------
+6. THE RUNTIME - what lands on disk (Kiro)
+--------------------------------------------------------------------------------
+  your-project/
+    .kiro/
+      skills/aidlc/SKILL.md           # the conductor's instructions
+      agents/aidlc-aidlc.md           # conductor (shown in agent picker)
+      agents/aidlc-*-agent.md         # the 14 personas (+ deny rules/tool grants)
+      hooks/aidlc-*.json              # guard + audit hooks (v2 format)
+      steering/aidlc-onboarding.md    # always-on harness setup
+      steering/aidlc-active-memory.md # always-on space memory
+      settings/cli.json               # pins Kiro CLI to v3 engine + aidlc agent
+    aidlc/                            # workspace shell (SIBLING of .kiro/)
+      spaces/<space>/
+        intents/<YYMMDD>-<label>/     # per-work record: state, audit, artifacts
+        knowledge/<agent>/            # your team standards
+        memory/                       # method memory the engine reads
+
+  Stage execution topologies across all 33 stages:
+    29 inline | 2 subagent (hub-and-spoke) | 1 pipeline (chain) | 1 mob (mesh)
+
+================================================================================
+APPENDIX B - SCENARIOS: HOW A SCOPE LIGHTS UP THE PIPELINE
+================================================================================
+Legend:  [F] full   [P] partial   [-] skipped
+
+Scenario (generic example)          Scope       Init Idea Incp Cnst Oper  Depth        Reviews
+----------------------------------  ----------  ---- ---- ---- ---- ----  -----------  -----------
+Fix a known defect                  bugfix       F    -    P    P    P    Minimal      Advisory
+Prove out a risky approach          poc          F    P    P    P    -    Minimal      Advisory
+Small, well-understood change       express      F    -    P    P    P    Minimal      None
+First product increment             mvp          F    P    F    F    -    Standard     Advisory
+A production feature                feature      F    F    F    F    F    Standard     Advisory
+Regulated / high-assurance service  enterprise   F    F    F    F    F    Comprehensive Adversarial
+
+How to read this:
+  - Same engine every row. The SCOPE just decides how much of the pipeline fires.
+  - Start low (express/poc) to prove the factory runs, then climb the rows as the
+    work gets more serious. Regulated, high-assurance work (payments, data,
+    compliance) is genuinely enterprise-grade - that is when every dial goes up.
+  - "Partial" means the phase runs only the stages that scope includes; the exact
+    per-stage membership is in the docs' Stage-by-Scope Matrix.
+================================================================================

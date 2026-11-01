@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 640" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#455a64"/></marker>
+    <marker id="arrp" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#7b1fa2"/></marker>
+    <marker id="arrf" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c62828"/></marker>
+    <marker id="arro" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#e65100"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1040" height="640" fill="#ffffff"/>
+  <text x="30" y="30" font-size="21" font-weight="700" fill="#1a237e">The AI-DLC Factory + the Agent Toolkit for AWS (the supplier)</text>
+  <text x="30" y="51" font-size="12.5" fill="#555">AI-DLC is the methodology; the Agent Toolkit for AWS is a SUPPLIER that gives the agents real, governed AWS capability.</text>
+  <rect x="30" y="66" width="976" height="56" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="44" y="84" font-size="12" font-weight="700" fill="#6a1b9a">CONTROL DIALS — right-size any run (start light, turn more on later)</text>
+  <g font-size="11" fill="#4a148c" text-anchor="middle">
+    <rect x="44" y="92" width="146" height="21" rx="10" fill="#fff" stroke="#ab47bc"/><text x="117" y="106">Scope (5–33 stages)</text>
+    <rect x="200" y="92" width="96" height="21" rx="10" fill="#fff" stroke="#ab47bc"/><text x="248" y="106">Depth</text>
+    <rect x="306" y="92" width="120" height="21" rx="10" fill="#fff" stroke="#ab47bc"/><text x="366" y="106">Test strategy</text>
+    <rect x="436" y="92" width="158" height="21" rx="10" fill="#fff" stroke="#ab47bc"/><text x="515" y="106">Review (none→adversarial)</text>
+    <rect x="604" y="92" width="150" height="21" rx="10" fill="#fff" stroke="#ab47bc"/><text x="679" y="106">Ceremony switches</text>
+  </g>
+  <line x1="320" y1="122" x2="320" y2="152" stroke="#7b1fa2" stroke-width="1.6" marker-end="url(#arrp)"/>
+  <line x1="545" y1="122" x2="545" y2="152" stroke="#7b1fa2" stroke-width="1.6" marker-end="url(#arrp)"/>
+  <line x1="700" y1="122" x2="700" y2="152" stroke="#7b1fa2" stroke-width="1.6" marker-end="url(#arrp)"/>
+  <rect x="172" y="156" width="662" height="24" rx="6" fill="#e1bee7" stroke="#8e24aa"/>
+  <text x="503" y="173" font-size="11.5" font-weight="700" fill="#6a1b9a" text-anchor="middle">CONDUCTOR orchestrates 14 agents · 11 domain + 2 reviewers + 1 composer</text>
+  <rect x="30" y="194" width="122" height="98" rx="10" fill="#ffe0b2" stroke="#e65100" stroke-width="2"/>
+  <text x="91" y="222" font-size="12" font-weight="700" fill="#bf360c" text-anchor="middle">PRODUCT IN</text>
+  <text x="91" y="243" font-size="10" fill="#6d4c41" text-anchor="middle">an "intent":</text>
+  <text x="91" y="258" font-size="10" fill="#6d4c41" text-anchor="middle">/aidlc &lt;describe</text>
+  <text x="91" y="272" font-size="10" fill="#6d4c41" text-anchor="middle">the work&gt;</text>
+  <g>
+    <rect x="170" y="194" width="110" height="98" rx="8" fill="#eceff1" stroke="#607d8b"/>
+    <text x="225" y="218" font-size="11.5" font-weight="700" fill="#263238" text-anchor="middle">0 · Init</text>
+    <text x="225" y="238" font-size="9" fill="#546e7a" text-anchor="middle">bootstrap</text>
+    <text x="225" y="280" font-size="9" font-style="italic" fill="#90a4ae" text-anchor="middle">3 · auto</text>
+  </g>
+  <g>
+    <rect x="292" y="194" width="110" height="98" rx="8" fill="#e8f5e9" stroke="#43a047"/>
+    <text x="347" y="218" font-size="11.5" font-weight="700" fill="#1b5e20" text-anchor="middle">1 · Ideation</text>
+    <text x="347" y="238" font-size="9" fill="#33691e" text-anchor="middle">should we</text>
+    <text x="347" y="250" font-size="9" fill="#33691e" text-anchor="middle">build it?</text>
+    <text x="347" y="280" font-size="9" font-style="italic" fill="#81c784" text-anchor="middle">7 stages</text>
+  </g>
+  <g>
+    <rect x="434" y="194" width="110" height="98" rx="8" fill="#e3f2fd" stroke="#1e88e5"/>
+    <text x="489" y="218" font-size="11.5" font-weight="700" fill="#0d47a1" text-anchor="middle">2 · Inception</text>
+    <text x="489" y="238" font-size="9" fill="#1565c0" text-anchor="middle">what &amp; shape</text>
+    <text x="489" y="280" font-size="9" font-style="italic" fill="#64b5f6" text-anchor="middle">9 stages</text>
+  </g>
+  <g>
+    <rect x="576" y="194" width="110" height="98" rx="8" fill="#fff3e0" stroke="#fb8c00"/>
+    <text x="631" y="218" font-size="11.5" font-weight="700" fill="#e65100" text-anchor="middle">3 · Construct</text>
+    <text x="631" y="238" font-size="9" fill="#ef6c00" text-anchor="middle">build per unit</text>
+    <text x="631" y="280" font-size="9" font-style="italic" fill="#ffb74d" text-anchor="middle">7 stages ×units</text>
+  </g>
+  <g>
+    <rect x="718" y="194" width="110" height="98" rx="8" fill="#fce4ec" stroke="#e53935"/>
+    <text x="773" y="218" font-size="11.5" font-weight="700" fill="#b71c1c" text-anchor="middle">4 · Operation</text>
+    <text x="773" y="238" font-size="9" fill="#c62828" text-anchor="middle">run, observe</text>
+    <text x="773" y="280" font-size="9" font-style="italic" fill="#ef9a9a" text-anchor="middle">7 stages</text>
+  </g>
+  <rect x="884" y="194" width="122" height="98" rx="10" fill="#ffe0b2" stroke="#e65100" stroke-width="2"/>
+  <text x="945" y="226" font-size="12" font-weight="700" fill="#bf360c" text-anchor="middle">PRODUCT OUT</text>
+  <text x="945" y="248" font-size="10" fill="#6d4c41" text-anchor="middle">shipped, tested,</text>
+  <text x="945" y="262" font-size="10" fill="#6d4c41" text-anchor="middle">traceable software</text>
+  <line x1="152" y1="243" x2="168" y2="243" stroke="#455a64" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="280" y1="243" x2="290" y2="243" stroke="#455a64" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="402" y1="243" x2="432" y2="243" stroke="#455a64" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="544" y1="243" x2="574" y2="243" stroke="#455a64" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="686" y1="243" x2="716" y2="243" stroke="#455a64" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="828" y1="243" x2="882" y2="243" stroke="#455a64" stroke-width="1.8" marker-end="url(#arr)"/>
+  <g>
+    <polygon points="417,231 429,243 417,255 405,243" fill="#fff" stroke="#e65100" stroke-width="1.2"/>
+    <polygon points="559,231 571,243 559,255 547,243" fill="#fff" stroke="#e65100" stroke-width="1.2"/>
+    <polygon points="701,231 713,243 701,255 689,243" fill="#fff" stroke="#e65100" stroke-width="1.2"/>
+  </g>
+  <text x="176" y="308" font-size="9" fill="#e65100">◆ verification + approval gate at each phase boundary</text>
+  <line x1="489" y1="330" x2="489" y2="294" stroke="#e65100" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arro)"/>
+  <line x1="631" y1="330" x2="631" y2="294" stroke="#e65100" stroke-width="2" marker-end="url(#arro)"/>
+  <line x1="773" y1="330" x2="773" y2="294" stroke="#e65100" stroke-width="2" marker-end="url(#arro)"/>
+  <rect x="30" y="330" width="976" height="78" rx="8" fill="#fff8e1" stroke="#e65100" stroke-width="1.5"/>
+  <text x="44" y="349" font-size="12" font-weight="700" fill="#bf360c">SUPPLIERS — MCP servers the agents call (the factory's external supply chain)</text>
+  <rect x="44" y="356" width="266" height="30" rx="6" fill="#ffe0b2" stroke="#e65100" stroke-width="1.6"/>
+  <text x="177" y="375" font-size="11.5" font-weight="700" fill="#bf360c" text-anchor="middle">Agent Toolkit for AWS</text>
+  <text x="322" y="368" font-size="9.5" fill="#8d6e63">AWS MCP Server (300+ services) · on-demand Skills ·</text>
+  <text x="322" y="381" font-size="9.5" fill="#8d6e63">Rule files · IAM + CloudWatch guardrails</text>
+  <text x="640" y="368" font-size="9.5" fill="#9e9e9e">other MCP servers (examples):</text>
+  <rect x="640" y="373" width="78" height="18" rx="9" fill="#fff" stroke="#bdbdbd"/><text x="679" y="386" font-size="9.5" fill="#757575" text-anchor="middle">playwright</text>
+  <rect x="724" y="373" width="64" height="18" rx="9" fill="#fff" stroke="#bdbdbd"/><text x="756" y="386" font-size="9.5" fill="#757575" text-anchor="middle">github</text>
+  <rect x="794" y="373" width="60" height="18" rx="9" fill="#fff" stroke="#bdbdbd"/><text x="824" y="386" font-size="9.5" fill="#757575" text-anchor="middle">notion</text>
+  <text x="44" y="402" font-size="9.5" fill="#e65100">↑ powers the AWS-led stages: 1.3 Feasibility · 3.3 NFR Design · 3.4 Infrastructure Design · 4.1–4.3 Deploy · 4.2 Provisioning · 4.7 Cost — all led by the aws-platform agent</text>
+  <rect x="30" y="418" width="976" height="50" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="44" y="437" font-size="12" font-weight="700" fill="#0d47a1">GOVERNANCE — runs underneath every stage</text>
+  <text x="44" y="457" font-size="10.5" fill="#1565c0">AI-DLC: approval gates · guard hooks · audit trail (131 events).   AWS side: IAM context keys (agent vs human actions) · CloudWatch / CloudTrail.</text>
+  <rect x="30" y="478" width="976" height="50" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="44" y="497" font-size="12" font-weight="700" fill="#1b5e20">MEMORY &amp; LEARNING — makes the factory improve each cycle</text>
+  <text x="44" y="517" font-size="10.5" fill="#2e7d32">AI-DLC: team knowledge per agent · active-memory steering · learning loop.   Toolkit: AWS Skills + live-docs fetch (beats stale training data).</text>
+  <path d="M 1006 243 L 1024 243 L 1024 556 L 16 556 L 16 243 L 30 243" fill="none" stroke="#c62828" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrf)"/>
+  <text x="520" y="551" font-size="11" font-weight="600" fill="#c62828" text-anchor="middle">Feedback loop — Operation's insights seed the next intent (Phase 4 → Phase 1)</text>
+  <rect x="30" y="575" width="16" height="13" rx="3" fill="#ffe0b2" stroke="#e65100"/><text x="54" y="586" font-size="10.5" fill="#333">Orange = product-specific (in/out) + the AWS supplier</text>
+  <rect x="400" y="575" width="16" height="13" rx="3" fill="#eceff1" stroke="#607d8b"/><text x="424" y="586" font-size="10.5" fill="#333">Grey/colour = the reusable factory — identical for any product</text>
+  <text x="30" y="612" font-size="9.5" fill="#9e9e9e">Sources: AWS AI-DLC docs (awslabs/aidlc-workflows) &amp; Agent Toolkit for AWS product page. Summarized for compliance with licensing restrictions.</text>
+</svg>
