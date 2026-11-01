@@ -15,12 +15,19 @@ How we run **AWS AI-DLC** inside **Kiro** as a *product-independent software fac
 
 *Click the diagram to open it full size.* Only the two orange ends are product-specific. Everything between is the reusable factory. Three cross-cutting layers run underneath: **Control dials** (right-size each run), **Governance** (gates, guards, audit), and **Memory** (team knowledge + a learning loop). An external **supplier** layer (MCP servers such as the Agent Toolkit for AWS) gives the agents real, governed capability.
 
+## The agents & stages, in detail
+
+The same pipeline, exploded: all **14 agent personas** (11 domain experts + 2 reviewers + 1 composer) and the **33 stages**, colour-coded by the agent that leads each, with its support agents, run condition, and reviewer coverage.
+
+[![The 14 AI-DLC agents and the 33 stages, colour-coded by lead agent](diagrams/03-agents-and-stages.svg)](diagrams/03-agents-and-stages.svg)
+
+*Click the diagram to open it full size.* A single **conductor** orchestrates all delegation — agents never call each other. The **architect** is the busiest (10 stages); **compliance** and **devsecops** only ever support, never lead. Phase 3 (Construction) repeats its per-unit stages for every Unit of work.
+
 ## More diagrams
 
 | Diagram | What it shows |
 |---|---|
 | [01-scenario-grid.svg](diagrams/01-scenario-grid.svg) | How each **scope** lights up the pipeline (start light, dial up) |
-| [03-agents-and-stages.svg](diagrams/03-agents-and-stages.svg) | The 14 agents and all 33 stages, in detail |
 
 ## Set it up
 
