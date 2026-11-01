@@ -23,12 +23,6 @@ The same pipeline, exploded: all **14 agent personas** (11 domain experts + 2 re
 
 *Click the diagram to open it full size.* A single **conductor** orchestrates all delegation — agents never call each other. The **architect** is the busiest (10 stages); **compliance** and **devsecops** only ever support, never lead. Phase 3 (Construction) repeats its per-unit stages for every Unit of work.
 
-## More diagrams
-
-| Diagram | What it shows |
-|---|---|
-| [01-scenario-grid.svg](diagrams/01-scenario-grid.svg) | How each **scope** lights up the pipeline (start light, dial up) |
-
 ## Set it up
 
 See **[docs/setup-kiro-windows.txt](docs/setup-kiro-windows.txt)** — a Windows setup guide plus the full functional hierarchy (Appendix A) and scope scenarios (Appendix B).
@@ -38,9 +32,8 @@ See **[docs/setup-kiro-windows.txt](docs/setup-kiro-windows.txt)** — a Windows
 ## Suggested reading order
 1. This README — the concept
 2. `diagrams/02-factory.svg` — the big picture
-3. `diagrams/01-scenario-grid.svg` — how to right-size a run
-4. `diagrams/03-agents-and-stages.svg` — the detail
-5. `docs/setup-kiro-windows.txt` — install + reference
+3. `diagrams/03-agents-and-stages.svg` — the detail
+4. `docs/setup-kiro-windows.txt` — install + reference
 
 ---
 *Sources: AWS AI-DLC docs (awslabs/aidlc-workflows) and the Agent Toolkit for AWS product page. Content summarized for compliance with licensing restrictions.*
